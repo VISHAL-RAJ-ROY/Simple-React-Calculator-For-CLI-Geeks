@@ -2,9 +2,7 @@ import React , { useState, useEffect } from 'react'
 
 const InputPlace = props => {
 
-    const emptyExpression = {id:null, expression:'', value:''}
-
-    const [expression, setExpression] = useState(emptyExpression)
+    const [expression, setExpression] = useState({...props.currentExpression})
 
     const handleChangeExpression = event => {
         const {name, value} = event.target
@@ -15,6 +13,10 @@ const InputPlace = props => {
         return true
     }
 
+    useEffect(()=>{
+        setExpression(props.currentExpression)
+    },[props.currentExpression])
+
     return (
         <form
             onSubmit = {
@@ -22,7 +24,7 @@ const InputPlace = props => {
                     event.preventDefault()
                     if( !isValidExpression(expression.expression) || expression.expression == '' ) return 
                     props.handleSubmittedExpression(expression)
-                    setExpression(emptyExpression)
+                    props.emptyCurrentExpression()
                 }
             }
         >

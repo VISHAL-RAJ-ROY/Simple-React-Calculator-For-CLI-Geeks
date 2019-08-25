@@ -21,7 +21,7 @@ const History = props => {
                                     <td>{expression.expression}</td>
                                     <td>{expression.value}</td>
                                     <td>
-                                        <button>Use</button>
+                                        <button onClick = {()=>props.handleUse(expression)}>Use</button>
                                         <button onClick = {()=>props.handleDelete(expression.id)}>Delete</button>
                                     </td>
                                 </tr>
