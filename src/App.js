@@ -4,14 +4,9 @@ import History from './components/history.js'
 
 const App = () => {
 
-  const calculate = () => {
-    return ''
-  }
-
   const handleSubmittedExpression = expression => {
     expression.id = listSize+1
     setListSize(expression.id)
-    expression.value = calculate(expression.expression)
     setExpressionList([expression,...expressionList])
   }
 
@@ -23,9 +18,14 @@ const App = () => {
 
   const dummyExpression = { id : null, expression : '', value : '' }
 
-  const handleUse = expression => setCurrentExpression({...expression})
+  const handleUse = expression => { 
+    setIsCorrect(true)
+    setCurrentExpression({...expression})
+  }
 
   const handleDelete = id => setExpressionList(expressionList.filter(expression => expression.id !== id))
+
+  const handleIncorrect = val => setIsCorrect(!val)
 
   const emptyCurrentExpression = () => setCurrentExpression(dummyExpression)
 
@@ -35,10 +35,15 @@ const App = () => {
 
   const [listSize, setListSize] = useState(dummyExpressionList.length)
 
+  const [isCorrect, setIsCorrect] = useState(true)
+
   return (
     <>
       <h1>React Calculator</h1>
-      <InputPlace emptyCurrentExpression={emptyCurrentExpression} currentExpression={currentExpression} handleSubmittedExpression={handleSubmittedExpression} />
+      <InputPlace setIsCorrect={setIsCorrect} handleIncorrect={handleIncorrect} emptyCurrentExpression={emptyCurrentExpression} currentExpression={currentExpression} handleSubmittedExpression={handleSubmittedExpression} />
+      <span>
+        {!isCorrect ? 'Incorrect!!' : '' }
+      </span>
       <History handleUse={handleUse} handleDelete={handleDelete} expressionList={expressionList} />
     </>
   )
