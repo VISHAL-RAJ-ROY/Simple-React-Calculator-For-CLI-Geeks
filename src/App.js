@@ -38,14 +38,20 @@ const App = () => {
   const [isCorrect, setIsCorrect] = useState(true)
 
   return (
-    <>
-      <h1>React Calculator</h1>
-      <InputPlace setIsCorrect={setIsCorrect} handleIncorrect={handleIncorrect} emptyCurrentExpression={emptyCurrentExpression} currentExpression={currentExpression} handleSubmittedExpression={handleSubmittedExpression} />
-      <span>
-        {!isCorrect ? 'Incorrect!!' : '' }
-      </span>
-      <History handleUse={handleUse} handleDelete={handleDelete} expressionList={expressionList} />
-    </>
+    <div className="flexContainer">
+      <div className="pl">
+        <h1>React Calculator</h1>
+        <div>
+        <InputPlace className="placeInCentre" setIsCorrect={setIsCorrect} handleIncorrect={handleIncorrect} emptyCurrentExpression={emptyCurrentExpression} currentExpression={currentExpression} handleSubmittedExpression={handleSubmittedExpression} />
+        </div>
+        <span>
+          {!isCorrect ? 'Incorrect!!' : '' }
+        </span>
+      </div>
+      <div className="pl2"> 
+        <History handleUse={handleUse} handleDelete={handleDelete} expressionList={expressionList} />
+      </div>
+    </div>
   )
 
 }

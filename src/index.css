@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  height: 100%;
   /* background-image: url("back3.png");
   height: 100%; 
   background-position: center;
@@ -9,7 +10,45 @@ body {
   background-size: cover; */
 }
 
-.try {
-text-align: center;
-color: rgb(0, 0, 0);
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* div {
+  background-color: #f1f1;
+} */
+
+/* .pl {
+  position: relative;
+  top: 130px;
+  right: 10px;
+}
+
+.pl2 {
+  position: relative;
+  top : 100px;
+  left: 50px;
+} */
+
+button {
+  margin: 5px;
+}
+
+input {
+  margin: 5px;
+}
+
+.f2 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
